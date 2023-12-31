@@ -1,0 +1,12 @@
+.template--home {
+  padding-top: var(--space-md);
+  .project-card img {
+    // aspect-ratio: 2 / 1;
+    // object-fit: cover;
+  }
+}
+
+@media all and (max-width: $sm) {
+  .page--home {
+  }
+}

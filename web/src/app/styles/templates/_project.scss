@@ -1,0 +1,28 @@
+[data-template="is-project"] {
+  overflow: hidden;
+  main {
+    padding-top: 0;
+  }
+}
+.template--project {
+  // padding-bottom: var(--space-xl);
+  .locale-side-note {
+    position: sticky;
+    top: var(--space-md);
+    // position: absolute;
+    // left: -2em;
+  }
+  .scrollable {
+    padding-bottom: var(--space-xl);
+  }
+  .total {
+    position: absolute;
+    top: var(--space-md);
+    left: 1.4em;
+  }
+  @media all and (max-width: $md) {
+    .scrollable:first-child {
+      border-right: var(--border);
+    }
+  }
+}

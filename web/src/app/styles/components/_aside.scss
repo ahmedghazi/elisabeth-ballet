@@ -1,0 +1,38 @@
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  text-align: center;
+  padding: 5em var(--space-md);
+  ul {
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media all and (max-width: $md) {
+  aside {
+    padding: var(--space-sm) var(--space-md);
+    height: auto;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 50;
+    top: 0;
+    border-bottom: 1px solid;
+    width: 100%;
+    .burger-wrapper {
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      &.is-active + .navs {
+        display: block;
+      }
+    }
+    .navs {
+      padding-top: var(--space-md);
+      display: none;
+    }
+  }
+}

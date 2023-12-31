@@ -1,0 +1,18 @@
+header {
+  .is-current {
+    text-align: right;
+    display: block;
+  }
+  .search {
+    display: none;
+  }
+  @media all and (max-width: $md) {
+  }
+}
+
+[data-template="is-home"] header,
+[data-template="is-page-modulaire"] header {
+  .search {
+    display: block;
+  }
+}
