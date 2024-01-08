@@ -98,6 +98,15 @@ export const infosQuery = groq`*[_type == "infos"][0]{
   text {
     ${blockContent}
   },
+  linksPDF[]{
+    ...,
+    file{
+      ...,
+      asset->{
+        url
+      }
+    }
+  },
   media[] {
     ...,
     asset->

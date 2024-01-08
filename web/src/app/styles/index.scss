@@ -13,11 +13,13 @@
 @import "components/aside";
 @import "components/header";
 @import "components/footer";
-@import "components/card";
+@import "components/projects-grid";
+@import "components/project-card";
 @import "components/infos";
 
 @import "components/ui/burger";
 
 @import "templates/home";
 @import "templates/project";
+@import "templates/infos";
 @import "templates/page-modulaire";

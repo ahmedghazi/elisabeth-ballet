@@ -1,0 +1,14 @@
+.template--infos {
+  .cv-group {
+    scroll-padding-top: toRem(24);
+  }
+}
+
+@media all and (max-width: $sm) {
+  .template--infos {
+    .val p {
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+  }
+}

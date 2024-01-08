@@ -48,7 +48,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
 
   if (!data) return <div>please edit page</div>;
   return (
-    <div className='template--page' data-template='page-modulaire'>
+    <div className='template--page-modulaire' data-template='page-modulaire'>
       <ContentPage input={data} />
     </div>
   );

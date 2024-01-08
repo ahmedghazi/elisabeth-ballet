@@ -1,7 +1,6 @@
 @font-face {
-  font-family: "ABCDiatype-Regular";
-  src: url("./fonts/ABCDiatype-Regular.woff") format("woff"),
-    url("./fonts/ABCDiatype-Regular.woff2") format("woff2");
+  font-family: "arial-black";
+  src: url("./fonts/arial-black.woff") format("woff");
   font-display: swap;
 }
 
@@ -29,7 +28,7 @@ body {
 }
 
 html {
-  // font-size: 14px;
+  font-size: 18px;
 }
 @media all and (min-width: 1080px) {
   html {

@@ -88,8 +88,24 @@ ul.list-with-comma {
 
 .scrollable {
   overflow-y: auto;
-  height: 100vh;
-  @include scrollbars(10px, black, white);
+  height: calc(100vh - toRem(24) * 2);
+  @include scrollbars(15px, black, white);
+  padding-right: 15px;
+  scroll-behavior: smooth;
+  @media (max-width: $md) {
+    height: calc(100vh - 57px);
+    padding-top: toRem(17, 16);
+    padding-left: 15px;
+    border-right: var(--border-width) solid;
+    background-color: white;
+    &.column--left {
+      border-left: var(--border-width) solid;
+    }
+    &.column--media {
+      padding-top: 0;
+      padding-left: 0;
+    }
+  }
 }
 
 ul.list-with-comma {

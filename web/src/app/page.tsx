@@ -30,7 +30,7 @@ const Home: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   params,
 }) => {
   // const data = await getHome();
-  // console.log(params.slug);
+  console.log(params.slug);
 
   const { isEnabled: preview } = draftMode();
   let data: Home;

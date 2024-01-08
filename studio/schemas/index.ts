@@ -26,6 +26,7 @@ import moduleText from './objects/modules/textUI'
 import moduleTexts from './objects/modules/textsUI'
 import moduleEmbed from './objects/modules/embedUI'
 import moduleProjects from './objects/modules/projectsUI'
+import linkFile from './objects/linkFile'
 
 export const schemaTypes = [
   home,
@@ -43,7 +44,8 @@ export const schemaTypes = [
   blockContent,
   linkExternal,
   linkInternal,
-  // linkModal,
+  linkFile,
+
   seo,
   embed,
   keyVal,

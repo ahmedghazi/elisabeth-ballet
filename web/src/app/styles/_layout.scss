@@ -3,14 +3,15 @@ html {
   // cursor: url("data:image/svg+xml,%3Csvg id='9cebf991-61f6-421b-aa5c-e8cb04c5c6c3' data-name='Calque 1' xmlns='http://www.w3.org/2000/svg' width='36.78' height='36.77' viewBox='0 0 36.78 36.77'%3E%3Ctitle%3Evj-cursor%3C/title%3E%3Cpath d='M.65.65C.8.5,1.1.57,1.55.8,7.41,4.32,10.62,4.43,16,1.29A5.67,5.67,0,0,1,22.8,2a4.78,4.78,0,0,1,0,6.88c-3.1,3.1-9.49,2-15.46-2.15,15.46,14.47,20.37,12.43,25.89,18,3.86,3.86,3.78,7.48,1.36,9.9s-6,2.49-9.9-1.36c-5.52-5.52-3.48-10.43-18-25.89,4.16,6,5.25,12.36,2.19,15.42A4.79,4.79,0,0,1,2,22.8,5.66,5.66,0,0,1,1.32,16c3.14-5.41,3-8.58-.49-14.48C.57,1.1.53.76.65.65Z' stroke='%23fff' stroke-miterlimit='10'/%3E%3C/svg%3E")
   //     0 0,
   //   default;
+  &,
+  body {
+    scroll-behavior: smooth;
+  }
 }
 body {
-  // overflow-y: auto;
-  // background-color: var(--color-bg);
   color: var(--color-primary);
   // @include debugFiletX(50%);
-
-  // @include debugOutline(var(--space-md));
+  // @include debugOutline(30px);
   transition: opacity 0.2s ease;
   &.is-loading {
     opacity: 0;
@@ -24,27 +25,62 @@ body {
 #page {
 }
 .bg {
-  background: url("/bg.png");
+  background: url("/ballet-bg-desktop.svg");
   background-size: calc(100% - var(--space-lg));
-  background-position: var(--space-lg) var(--space-lg);
+  background-position: toRem(16);
   background-repeat: no-repeat;
-  // background-attachment: fixed;
   position: fixed;
   width: calc(100% / 7 * 6);
   height: 100vh;
+  transition: opacity 0.2s;
+}
+.page-layout {
+  // padding: var(--space-md);
+  main {
+    padding: toRem(24) var(--space-md);
+  }
+  aside {
+    padding: calc(115px + toRem(24)) var(--space-md);
+  }
+  main,
+  aside {
+    & > * {
+      // background-color: red;
+    }
+  }
 }
 main {
-  min-height: var(--app-height, 100vh);
+  // min-height: var(--app-height, 100vh);
   position: relative;
-  padding: var(--space-md) 0 var(--space-xl) var(--space-xl);
   transition: opacity 0.2s ease;
-  aside {
-    padding: var(--space-xl) var(--space-md);
-  }
 }
 
 .h-app {
   height: var(--app-height);
+}
+
+[data-template="is-page-modulaire"] .bg,
+[data-template="is-infos"] .bg {
+  opacity: 0;
+}
+
+// [data-template="is-infos"] .page-layout,
+// [data-template="is-project"] .page-layout {
+//   padding-top: 0;
+//   main {
+//     padding-top: toRem(24);
+//     padding-top: 0;
+//   }
+//   aside,
+//   .about.sticky {
+//     top: toRem(0);
+//   }
+// }
+
+.back {
+  position: fixed;
+  bottom: var(--space-md);
+  left: var(--space-md);
 }
 
 @media all and (min-width: $md) {
@@ -60,25 +96,37 @@ main {
   .hidden-sm {
     display: none;
   }
+
+  .bg {
+    background: url("/ballet-bg-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: calc(100% - var(--space-lg));
+    background-position: toRem(17, 18)
+      calc(var(--header-height) + toRem(16, 18));
+    width: 100%;
+  }
   #page {
     overflow-x: auto;
   }
   [data-template="is-infos"] .page-layout,
   [data-template="is-project"] .page-layout {
-    width: 180vw;
+    width: calc((100vw - toRem(30, 18)) * 2);
   }
-  aside {
-    order: 1;
-    // position: fixed;
-    // width: 100%;
-    // z-index: 50;
-    // top: 0;
-    // border-bottom: 1px solid;
-    // width: 100%;
+  .page-layout {
+    aside {
+      order: 1;
+      padding: toRem(16, 18) var(--space-md) toRem(16, 18);
+    }
+    main {
+      order: 2;
+      padding: toRem(16, 18) toRem(30, 18);
+      padding-top: toRem(57, 18) !important;
+      padding-bottom: 0;
+    }
   }
-  main {
-    order: 2;
-    padding: var(--space-md);
-    padding-top: var(--header-height) !important;
+  .back {
+    position: initial;
+    margin: var(--space-lg) 0;
+    display: block;
   }
 }

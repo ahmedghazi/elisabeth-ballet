@@ -70,6 +70,14 @@ export default defineType({
     }),
 
     defineField({
+      name: 'linksPDF',
+      title: 'Liens PDF',
+      type: 'array',
+      of: [{type: 'linkFile'}],
+      group: 'editorial',
+    }),
+
+    defineField({
       name: 'media',
       title: 'Media',
       type: 'array',

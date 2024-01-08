@@ -1,14 +1,13 @@
 .burger-wrapper {
   z-index: 250;
-  // border: $border;
   &::after {
     content: "";
     position: absolute;
     top: 0;
     left: 50%;
-    width: 30px;
-    height: 30px;
-    // background-color: red;
+    width: 20px;
+    height: 24px;
+    // background-color: rgba(255, 0, 0, 0.229);
     transform: translateX(-50%);
   }
   &.is-active {
@@ -20,7 +19,7 @@
     }
   }
   .burger {
-    transform: translateY(12px);
-    @include burger(30px, 4px, 5px);
+    transform: translateY(11px);
+    @include burger(20px, 2.5px, 5px);
   }
 }

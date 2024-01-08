@@ -1,3 +1,4 @@
+import website from "@/app/config/website";
 import { urlFor } from "@/app/utils/sanity-utils";
 import Image from "next/image";
 import React from "react";
@@ -5,11 +6,11 @@ import { SanityImageAsset } from "sanity-codegen";
 
 type Props = {
   asset: SanityImageAsset | any;
-  width: number;
-  alt: string | any;
+  width?: number;
+  alt?: string | any;
 };
 
-const Figure = ({ asset, width = 1000, alt }: Props) => {
+const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
   return (
     <figure>
       <Image

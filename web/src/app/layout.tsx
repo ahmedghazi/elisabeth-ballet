@@ -26,7 +26,7 @@ export default function RootLayout({
           <PageContextProvider>
             <LocaleContextProvider>
               {/* <Header /> */}
-              <div className='page-layout grid grid-cols-1 md:grid-cols-7'>
+              <div className='page-layout md:grid md:grid-cols-7'>
                 <div className='bg'></div>
                 <main className='col-span-6'>{children}</main>
                 <Aside />

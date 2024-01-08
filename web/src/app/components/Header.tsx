@@ -39,7 +39,7 @@ const Header = ({ settings }: Props) => {
             ))}
           </ul>
 
-          {/* {navInfos && navInfos.length > 0 && (
+          {navInfos && navInfos.length > 0 && (
             <ul className='nav-infos mb-md'>
               {navInfos.map((item, i) => (
                 <li key={item.slug}>
@@ -47,7 +47,7 @@ const Header = ({ settings }: Props) => {
                 </li>
               ))}
             </ul>
-          )} */}
+          )}
 
           <LocalesSwitcher />
           <Search />

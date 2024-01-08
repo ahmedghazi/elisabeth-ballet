@@ -16,7 +16,7 @@ const ProjectCard = ({ input }: Props) => {
     <article className='project-card'>
       <Link href={_linkResolver(input)}>
         <Figure asset={input.imageCover?.asset} width={600} alt={input.title} />
-        <div className='infos text-center py-sm'>
+        <div className='infos text-center py-sm-'>
           <h2>{input.title}</h2>
           <PortableText
             value={_localizeField(input.description)}

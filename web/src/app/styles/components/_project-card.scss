@@ -1,0 +1,22 @@
+.project-card {
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(11);
+  }
+  img {
+    max-height: toRem(96);
+    width: auto;
+    // object-fit: contain;
+    // object-position: center;
+    margin: auto;
+  }
+  // &:hover {
+  //   color: var(--color-muted);
+  // }
+  @media (max-width: $md) {
+    img {
+      max-height: toRem(144, 18);
+    }
+  }
+}

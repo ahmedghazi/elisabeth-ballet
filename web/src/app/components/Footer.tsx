@@ -10,6 +10,7 @@ type Props = {
 };
 
 const Footer = ({ settings }: Props) => {
+  // console.log(settings.navSecondary);
   return (
     <footer>
       <div>© {website.titleAlt}</div>

@@ -117,6 +117,13 @@ export interface Infos extends SanityDocument {
   text?: LocaleBlockContent;
 
   /**
+   * Liens PDF — `array`
+   *
+   *
+   */
+  linksPDF?: Array<SanityKeyed<LinkFile>>;
+
+  /**
    * Media — `array`
    *
    *
@@ -166,6 +173,13 @@ export interface Settings extends SanityDocument {
    *
    */
   navSecondary?: Array<SanityKeyed<LinkInternal> | SanityKeyed<LinkExternal>>;
+
+  /**
+   * Crédits — `localeBlockContent`
+   *
+   *
+   */
+  credits?: LocaleBlockContent;
 
   /**
    * Message 404 — `blockContent`
@@ -406,6 +420,23 @@ export type LinkInternal = {
    *
    */
   link?: SanityReference<Infos | PageModulaire | Home | Project | Tag>;
+};
+
+export type LinkFile = {
+  _type: "linkFile";
+  /**
+   * label — `localeString`
+   *
+   *
+   */
+  label?: LocaleString;
+
+  /**
+   * file — `file`
+   *
+   *
+   */
+  file?: { _type: "file"; asset: SanityReference<any> };
 };
 
 export type Seo = {

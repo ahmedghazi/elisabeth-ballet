@@ -1,8 +1,12 @@
 .template--page-modulaire {
-  padding-top: var(--space-md);
+  // padding-top: var(--space-md);
   .project-card img {
     // aspect-ratio: 2 / 1;
     // object-fit: cover;
+  }
+  .credits {
+    top: 40%;
+    position: sticky;
   }
 }
 

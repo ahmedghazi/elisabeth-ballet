@@ -1,7 +1,7 @@
 [data-template="is-project"] {
   overflow: hidden;
-  main {
-    padding-top: 0;
+  .page-layout {
+    padding-top: toRem(24); //toRem(24)
   }
 }
 .template--project {
@@ -12,6 +12,7 @@
     // position: absolute;
     // left: -2em;
   }
+
   .scrollable {
     padding-bottom: var(--space-xl);
   }
@@ -20,9 +21,18 @@
     top: var(--space-md);
     left: 1.4em;
   }
-  @media all and (max-width: $md) {
-    .scrollable:first-child {
-      border-right: var(--border);
+  // @media all and (max-width: $md) {
+  //   .scrollable:first-child {
+  //     border-right: var(--border);
+  //   }
+  // }
+}
+
+@media all and (max-width: $md) {
+  [data-template="is-project"] {
+    overflow: hidden;
+    .page-layout {
+      padding: 0;
     }
   }
 }

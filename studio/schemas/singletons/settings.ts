@@ -93,6 +93,13 @@ export default defineType({
     }),
 
     defineField({
+      name: 'credits',
+      title: 'Crédits',
+      type: 'localeBlockContent',
+      group: 'misc',
+    }),
+
+    defineField({
       name: 'message404',
       title: 'Message 404',
       type: 'blockContent',

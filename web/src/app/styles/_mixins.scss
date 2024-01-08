@@ -641,7 +641,7 @@ $browser-context: 14;
   );
 }
 
-@function toRem($value) {
-  $remValue: ($value / 16) + rem;
+@function toRem($value, $rootSize: 16) {
+  $remValue: ($value / $rootSize) + rem;
   @return $remValue;
 }

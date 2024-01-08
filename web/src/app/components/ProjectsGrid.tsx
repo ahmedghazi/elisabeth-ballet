@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Project } from "../types/schema";
 import ProjectCard from "./ProjectCard";
 import { usePageContext } from "../context/PageContext";
@@ -9,47 +9,38 @@ type Props = {
 };
 
 const ProjectsGrid = ({ input }: Props) => {
-  const interval = 3;
-  // const newArr = input.flatMap((w: Project, i: number) => {
-  //   const blankElem = {
-  //     _type: "blank",
-  //     _id: Math.round(Math.random() * 100),
-  //   };
-  //   return (i + 1) % interval === 0 ? [w, blankElem] : w;
-  // });
-  // console.log(blankElem);
-  // console.log(newArr);
+  const [ready, setReady] = useState<boolean>(false);
+  // let interval = 3;
+  // const intVal = useMemo(() => {
+  //   return [1, 3, 5, 4].sort((a, b) => 0.5 - Math.random());
+  // }, []);
 
-  const newArr = useMemo(() => {
+  const randomGrid = useMemo(() => {
     return input.flatMap((w: Project, i: number) => {
       const blankElem = {
         _type: "blank",
         _id: Math.round(Math.random() * 100),
       };
+      const interval = 1 + Math.round(Math.random() * 2);
+      // const interval = intVal[i] || 2;
       return (i + 1) % interval === 0 ? [w, blankElem] : w;
     });
+  }, [input]);
+
+  useEffect(() => {
+    setReady(true);
   }, []);
 
-  const { searchResult } = usePageContext();
-  console.log(searchResult);
+  // console.log(input);
   return (
-    <div className='grid gap-x-md gap-y-lg md:grid-cols-6'>
-      {searchResult &&
-        searchResult.length > 0 &&
-        searchResult.map((item: Project | any, i: number) => (
-          <div key={item._id + "-" + i}>
-            <ProjectCard input={item} />
-          </div>
-        ))}
-      {searchResult &&
-        searchResult.length === 0 &&
-        newArr.map((item: Project | any, i: number) => (
+    <div className='projects-grid grid gap-x-md gap-y-lg md:grid-cols-6'>
+      {ready &&
+        randomGrid.map((item: Project | any, i: number) => (
           <div key={item._id + "-" + i}>
             {item._type === "blank" && <article className='blank'></article>}
             {item._type === "project" && <ProjectCard input={item} />}
           </div>
         ))}
-      {/* <pre>{JSON.stringify(newArr, null, 2)}</pre> */}
     </div>
   );
 };
