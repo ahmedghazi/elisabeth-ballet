@@ -87,7 +87,7 @@ ul.list-with-comma {
 }
 
 .hide-sb {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  -ms-overflow-style: none;
   scrollbar-width: none; /* Firefox */
 }
 .hide-s::-webkit-scrollbar {
