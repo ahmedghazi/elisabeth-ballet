@@ -94,8 +94,6 @@ const ContentProject = ({ input }: Props) => {
             </div>
             <div className='scrollable column--media'>
               <div className='inner '>
-                {/* <div className='ghost-spacer bg-white h-md'></div> */}
-
                 {input.media?.length &&
                   input.media.map((item, i) => (
                     <div
@@ -103,7 +101,7 @@ const ContentProject = ({ input }: Props) => {
                       className='mb-md flex gap-lg media-item'>
                       <div className='pr-md hidden-sm index-wrapper'>
                         <div className='sticky top-md'>
-                          {i < 10 ? `0${i + 1}` : i}
+                          {i < 9 ? `0${i + 1}` : i + 1}
                         </div>
                       </div>
                       {item.asset && (
