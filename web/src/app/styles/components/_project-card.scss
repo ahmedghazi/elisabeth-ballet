@@ -4,12 +4,22 @@
     flex-direction: column;
     gap: toRem(11);
   }
+  figure {
+    flex-shrink: 0;
+    // border: 1px solid red;
+    // aspect-ratio: unset !important;
+    height: toRem(96) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
   img {
+    // border: 1px solid blue;
     max-height: toRem(96);
     // width: auto !important;
     object-fit: contain !important;
     // object-position: center;
-    margin: auto;
+    // margin: auto;
     background-size: contain !important;
   }
   // &:hover {
