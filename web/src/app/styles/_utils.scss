@@ -103,6 +103,9 @@ ul.list-with-comma {
   padding-right: 15px;
   scroll-behavior: smooth;
 
+  &.column--text {
+    background-color: white;
+  }
   &.column--media {
     padding-right: 0;
   }

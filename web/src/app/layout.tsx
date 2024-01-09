@@ -6,6 +6,7 @@ import { LocaleContextProvider } from "./context/LocaleContext";
 import Cursor from "./components/ui/Cursor";
 import Aside from "./components/Aside";
 import Bg from "./components/Bg";
+import PageTransition from "./components/ui/PageTransition";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -26,14 +27,14 @@ export default function RootLayout({
         <div id='page'>
           <PageContextProvider>
             <LocaleContextProvider>
-              {/* <Header /> */}
               <div className='page-layout md:grid md:grid-cols-7'>
-                {/* <div className='bg'></div> */}
                 <Bg />
-                <main className='col-span-6'>{children}</main>
+                <main className='col-span-6'>
+                  {/* <PageTransition>{children}</PageTransition> */}
+                  {children}
+                </main>
                 <Aside />
               </div>
-              {/* <Footer /> */}
             </LocaleContextProvider>
           </PageContextProvider>
           <Cursor size={15} color='#000' />

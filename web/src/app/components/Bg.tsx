@@ -144,30 +144,29 @@ const LogoMobile = () => (
 const Bg = (props: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    _randomize();
+    // _randomize();
+    publish("REVEAL");
   }, []);
 
-  const _randomize = () => {
-    // const
-    const paths = ref.current?.querySelectorAll("path");
-    if (paths) {
-      let delayTotal = 0;
-      paths.forEach((el) => {
-        const delay = 1000 + Math.random() * 200;
-        const duration = Math.random() * 1000;
-        el.style.transitionDelay = `${delay}ms`;
-        el.style.transitionDuration = `${duration}ms`;
-        el.style.opacity = "1";
-        delayTotal += delay;
-      });
-      console.log(delayTotal);
-      setTimeout(() => {
-        publish("REVEAL");
-      }, 2000);
-    } else {
-      publish("REVEAL");
-    }
-  };
+  // const _randomize = () => {
+  //   const isMobile = window.innerWidth <= 1080;
+  //   const paths = ref.current?.querySelectorAll("path");
+  //   if (paths) {
+  //     paths.forEach((el) => {
+  //       const delay = isMobile ? 0 : 1000 + Math.random() * 200;
+  //       const duration = Math.random() * 1000;
+  //       el.style.transitionDelay = `${delay}ms`;
+  //       el.style.transitionDuration = `${duration}ms`;
+  //       el.style.opacity = "1";
+  //     });
+  //     // console.log(delayTotal);
+  //     setTimeout(() => {
+  //       publish("REVEAL");
+  //     }, 2000);
+  //   } else {
+  //     publish("REVEAL");
+  //   }
+  // };
 
   return (
     <div className='bg p-md' ref={ref}>

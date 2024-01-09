@@ -18,13 +18,15 @@ const ProjectCard = ({ input }: Props) => {
   const variants = {
     show: (custom: number) => ({
       opacity: 1,
-      y: 0,
       transition: { delay: custom },
     }),
   };
 
   useEffect(() => {
-    if (!document.body.classList.contains("is-loading")) {
+    if (
+      !document.body.classList.contains("is-loading") ||
+      window.innerWidth < 1080
+    ) {
       controls.start("show");
     }
     const token = subscribe("REVEAL", () => {
@@ -38,33 +40,27 @@ const ProjectCard = ({ input }: Props) => {
 
   return (
     <article className='project-card'>
-      <motion.div
-        // animate={controls}
-        // variants={variants}
-        initial={{ opacity: "0", y: -10 }}
-        // // animate={{ opacity: "1" }}
-        // animate='show'
-        // transition={{ delay: Math.random() * 3 }}
-
-        custom={Math.random() * 2}
+      {/* <motion.div
+        initial={{ opacity: "0" }}
+        custom={Math.random() * 1}
         animate={controls}
         variants={variants}
-        transition={{ duration: 0.3 }}>
-        <Link href={_linkResolver(input)}>
-          <Figure
-            asset={input.imageCover?.asset}
-            width={30600}
-            alt={input.title}
+        transition={{ duration: 0.5, type: "tween" }}> */}
+      <Link href={_linkResolver(input)}>
+        <Figure
+          asset={input.imageCover?.asset}
+          width={30600}
+          alt={input.title}
+        />
+        <div className='infos text-center py-sm-'>
+          <h2>{input.title}</h2>
+          <PortableText
+            value={_localizeField(input.description)}
+            components={components}
           />
-          <div className='infos text-center py-sm-'>
-            <h2>{input.title}</h2>
-            <PortableText
-              value={_localizeField(input.description)}
-              components={components}
-            />
-          </div>
-        </Link>
-      </motion.div>
+        </div>
+      </Link>
+      {/* </motion.div> */}
     </article>
   );
 };

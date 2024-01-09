@@ -42,7 +42,7 @@ const ContentInfos = ({ input }: Props) => {
   return (
     <div className='content--infos '>
       <div className='grid grid-cols-2 md:grid-cols-6 md:gap-lg'>
-        <div className='scrollable md:col-span-2 column--left'>
+        <div className='scrollable md:col-span-2 column--text column--left'>
           {/* <div className='ghost-spacer bg-white h-md'></div> */}
           <div className='about md:sticky top-0'>
             <div className='chapo mb-md'>
@@ -82,7 +82,7 @@ const ContentInfos = ({ input }: Props) => {
             />
           </Link>
         </div>
-        <div className='scrollable md:col-span-4 column--right'>
+        <div className='scrollable md:col-span-4 column--text column--right'>
           {/* <div className='ghost-spacer bg-white h-md'></div> */}
           <div className='cv text-center mb-md'>
             {input.cv?.map((item, i) => (

@@ -6,8 +6,8 @@
   }
   img {
     max-height: toRem(96);
-    width: auto;
-    // object-fit: contain;
+    // width: auto !important;
+    object-fit: contain !important;
     // object-position: center;
     margin: auto;
   }

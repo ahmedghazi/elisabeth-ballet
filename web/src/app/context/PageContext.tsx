@@ -52,17 +52,18 @@ export const PageContextProvider = (props: PageContextProps) => {
     _format();
     window.addEventListener("resize", _format);
 
-    const token = subscribe("REVEAL", () => {
-      document.body.classList.remove("is-loading");
-    });
+    // const token = subscribe("REVEAL", () => {
+    //   document.body.classList.remove("is-loading");
+    // });
 
     return () => {
       window.removeEventListener("resize", _format);
-      unsubscribe(token);
+      // unsubscribe(token);
     };
   }, []);
 
   useEffect(() => {
+    // console.log(pathname);
     _handlePageTemplate();
     //clean up search context
     // setSearchResult([]);
@@ -78,10 +79,13 @@ export const PageContextProvider = (props: PageContextProps) => {
     const mainDiv: HTMLElement = document.querySelector(
       "main [data-template]"
     ) as HTMLElement;
+    // console.log(mainDiv);
     if (mainDiv) {
       const template = mainDiv.dataset.template;
+      // console.log(template);
+
       document.body.dataset.template = `is-${template}`;
-      // document.body.classList.remove("is-loading");
+      document.body.classList.remove("is-loading");
       // setTimeout(() => {}, 1000);
     }
   };
