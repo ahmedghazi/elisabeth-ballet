@@ -43,8 +43,8 @@ const SummaryDetailFramer = ({ summary, detail }) => {
           initial='collapsed'
           className='z-0 overflow-hidden'
           animate={controls}
-          transition={{ duration: 0.3 }}
-          variants={variants}>
+          variants={variants}
+          transition={{ duration: 0.3 }}>
           {detail}
         </motion.div>
       </div>

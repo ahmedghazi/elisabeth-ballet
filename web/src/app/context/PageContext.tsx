@@ -9,6 +9,7 @@ import React, {
 import { usePathname } from "next/navigation";
 import { INavInfos } from "../types/custom";
 import { Project } from "../types/schema";
+import { subscribe, unsubscribe } from "pubsub-js";
 // import { getSettings } from "../utils/sanity-queries";
 
 // const PageContext = createContext({});
@@ -46,12 +47,18 @@ export const PageContextProvider = (props: PageContextProps) => {
   };
 
   useEffect(() => {
-    _format();
     _handlePageTemplate();
+
+    _format();
     window.addEventListener("resize", _format);
+
+    const token = subscribe("REVEAL", () => {
+      document.body.classList.remove("is-loading");
+    });
 
     return () => {
       window.removeEventListener("resize", _format);
+      unsubscribe(token);
     };
   }, []);
 
@@ -65,17 +72,6 @@ export const PageContextProvider = (props: PageContextProps) => {
     const wh = window.innerHeight;
 
     document.documentElement.style.setProperty("--app-height", wh + "px");
-
-    // const header = document.querySelector("header");
-    // let headerBounding = {} || { height: 50 };
-    // if (header) {
-    //   headerBounding = header.getBoundingClientRect();
-
-    //   document.documentElement.style.setProperty(
-    //     "--header-height",
-    //     headerBounding.height + "px"
-    //   );
-    // }
   };
 
   const _handlePageTemplate = () => {
@@ -85,7 +81,8 @@ export const PageContextProvider = (props: PageContextProps) => {
     if (mainDiv) {
       const template = mainDiv.dataset.template;
       document.body.dataset.template = `is-${template}`;
-      document.body.classList.remove("is-loading");
+      // document.body.classList.remove("is-loading");
+      // setTimeout(() => {}, 1000);
     }
   };
 

@@ -25,7 +25,7 @@ const Header = ({ settings }: Props) => {
         </div>
         <nav>
           {/* <pre>{JSON.stringify(settings, null, 2)}</pre> */}
-          <ul className='mb-md'>
+          <ul className='mb-md-'>
             {settings.navPrimary?.map((item, i) => (
               <li key={item._key}>
                 <Link

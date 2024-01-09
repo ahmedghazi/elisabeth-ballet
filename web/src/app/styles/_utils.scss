@@ -8,6 +8,7 @@ figure img {
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: -moz-crisp-edges;
   image-rendering: pixelated;
+  display: block;
 }
 
 // .hidden {
@@ -95,6 +96,7 @@ ul.list-with-comma {
 }
 
 .scrollable {
+  overflow: hidden;
   overflow-y: auto;
   height: calc(100vh - toRem(24) * 2);
   @include scrollbars(15px, black, transparent);

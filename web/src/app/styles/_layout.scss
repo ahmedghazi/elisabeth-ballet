@@ -12,9 +12,15 @@ body {
   color: var(--color-primary);
   // @include debugFiletY(138px);
   // @include debugOutline(30px);
-  transition: opacity 0.2s ease;
+  main,
+  aside {
+    transition: opacity 0.2s ease;
+  }
   &.is-loading {
-    opacity: 0;
+    main,
+    aside {
+      opacity: 0;
+    }
   }
   &.is-fetching {
     main {
@@ -25,14 +31,21 @@ body {
 #page {
 }
 .bg {
-  background: url("/ballet-bg-desktop.svg");
-  background-size: calc(100% - var(--space-lg));
-  background-position: toRem(16);
-  background-repeat: no-repeat;
+  // background: url("/ballet-bg-desktop.svg");
+  // background-size: calc(100% - var(--space-lg));
+  // background-position: toRem(16);
+  // background-repeat: no-repeat;
   position: fixed;
   width: calc(100% / 7 * 6);
   height: 100vh;
   transition: opacity 0.2s;
+  path {
+    fill: none;
+    stroke: #2b2e34;
+    stroke-width: 1.296;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
 }
 .page-layout {
   // padding: var(--space-md);
@@ -98,12 +111,20 @@ main {
   }
 
   .bg {
-    background: url("/ballet-bg-mobile.svg");
-    background-repeat: no-repeat;
-    background-size: calc(100% - var(--space-lg));
-    background-position: toRem(17, 18)
-      calc(var(--header-height) + toRem(16, 18));
+    // background: url("/ballet-bg-mobile.svg");
+    // background-repeat: no-repeat;
+    // background-size: calc(100% - var(--space-lg));
+    // background-position: toRem(17, 18)
+    //   calc(var(--header-height) + toRem(16, 18));
+    // width: 100%;
+    padding-top: calc(var(--header-height, 57px) + toRem(16, 18));
     width: 100%;
+    path {
+      fill: none;
+      stroke: #2b2e34;
+      stroke-width: 0.8;
+      stroke-miterlimit: 10;
+    }
   }
   #page {
     overflow-x: auto;

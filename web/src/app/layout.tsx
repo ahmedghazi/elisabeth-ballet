@@ -5,6 +5,7 @@ import { PageContextProvider } from "./context/PageContext";
 import { LocaleContextProvider } from "./context/LocaleContext";
 import Cursor from "./components/ui/Cursor";
 import Aside from "./components/Aside";
+import Bg from "./components/Bg";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -27,7 +28,8 @@ export default function RootLayout({
             <LocaleContextProvider>
               {/* <Header /> */}
               <div className='page-layout md:grid md:grid-cols-7'>
-                <div className='bg'></div>
+                {/* <div className='bg'></div> */}
+                <Bg />
                 <main className='col-span-6'>{children}</main>
                 <Aside />
               </div>
