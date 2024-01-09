@@ -21,7 +21,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const data = await getPageModulaire(params.slug);
   return {
-    title: `${data?.seo?.metaTitle || data?.title || ""}`,
+    title: `${data?.seo?.metaTitle || data?.title?.fr || ""}`,
     description: data?.seo?.metaDescription,
     openGraph: {
       images: data?.seo?.metaImage?.asset.url || website.image,

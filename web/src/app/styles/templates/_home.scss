@@ -1,5 +1,23 @@
+[data-template="is-home"] {
+  overflow: hidden;
+  @media all and (min-width: $md) {
+    main {
+      padding-top: 0;
+      padding-bottom: 0;
+      .scrollable {
+        height: 100vh;
+        padding-top: var(--space-md);
+        padding-bottom: var(--space-xl);
+        .sticky.top-md {
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
 .template--home {
-  padding-top: var(--space-md);
+  // padding-top: var(--space-md);
   .project-card img {
     // aspect-ratio: 2 / 1;
     // object-fit: cover;

@@ -19,14 +19,12 @@ const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
         height={asset?.metadata?.dimensions.height || width}
         alt={alt || ""}
         sizes='100vw'
-        style={
-          {
-            // width: "100%",
-            // height: "auto",
-            // aspectRatio: autoHeight ? "none" : "1 / 1",
-            // objectFit: "cover",
-          }
-        }
+        style={{
+          // width: "100%",
+          // height: "auto",
+          aspectRatio: `${asset?.metadata?.dimensions.width} / ${asset?.metadata?.dimensions.height}`,
+          // objectFit: "cover",
+        }}
         blurDataURL={asset?.metadata?.lqip}
         placeholder='blur'
       />

@@ -1,7 +1,20 @@
 [data-template="is-project"] {
   overflow: hidden;
   .page-layout {
-    padding-top: toRem(24); //toRem(24)
+    //padding-top: toRem(24); //toRem(24)
+  }
+  @media all and (min-width: $md) {
+    main {
+      padding-top: 0;
+      padding-bottom: 0;
+      .scrollable {
+        height: 100vh;
+        padding-top: var(--space-md);
+        .sticky.top-md {
+          top: 0;
+        }
+      }
+    }
   }
 }
 .template--project {
@@ -9,6 +22,7 @@
   .locale-side-note {
     position: sticky;
     top: var(--space-md);
+    top: 0;
     // position: absolute;
     // left: -2em;
   }

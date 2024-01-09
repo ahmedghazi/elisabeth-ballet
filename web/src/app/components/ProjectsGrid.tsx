@@ -36,7 +36,7 @@ const ProjectsGrid = ({ input }: Props) => {
     <div className='projects-grid grid gap-x-md gap-y-lg md:grid-cols-6'>
       {ready &&
         randomGrid.map((item: Project | any, i: number) => (
-          <div key={item._id + "-" + i}>
+          <div key={item._id + "-" + i} className='grid-item'>
             {item._type === "blank" && <article className='blank'></article>}
             {item._type === "project" && <ProjectCard input={item} />}
           </div>

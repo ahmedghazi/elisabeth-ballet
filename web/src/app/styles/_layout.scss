@@ -10,7 +10,7 @@ html {
 }
 body {
   color: var(--color-primary);
-  // @include debugFiletX(50%);
+  // @include debugFiletY(138px);
   // @include debugOutline(30px);
   transition: opacity 0.2s ease;
   &.is-loading {
@@ -40,7 +40,7 @@ body {
     padding: toRem(24) var(--space-md);
   }
   aside {
-    padding: calc(115px + toRem(24)) var(--space-md);
+    padding: calc(toRem(115) + toRem(24)) var(--space-md);
   }
   main,
   aside {
@@ -59,7 +59,7 @@ main {
   height: var(--app-height);
 }
 
-[data-template="is-page-modulaire"] .bg,
+// [data-template="is-page-modulaire"] .bg,
 [data-template="is-infos"] .bg {
   opacity: 0;
 }

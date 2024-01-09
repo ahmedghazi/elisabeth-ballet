@@ -19,8 +19,6 @@ const Projects = ({ input }: Props) => {
   return (
     <div className='module--projects'>
       <ProjectsGrid input={data} />
-      <ProjectsGrid input={data} />
-      <ProjectsGrid input={data} />
     </div>
   );
 };

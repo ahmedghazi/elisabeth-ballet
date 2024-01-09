@@ -1,3 +1,7 @@
+# paper
+
+https://paper.dropbox.com/doc/Elisabeth-Ballet-www--CHPJnyNqHyIDlI9qoErSiG5mAg-SU69yaZ7bBtaw4r2lahoX
+
 # design
 
 https://www.dropbox.com/scl/fi/9igw00yvs5gxpkdzzl5jj/SITE_INDESIGN_AHMED.pdf?rlkey=eufdlq126p2k6y1i4hcwgxzfv&dl=0
@@ -21,11 +25,11 @@ https://xd.adobe.com/view/ffbfc964-0f9f-49a5-a645-6517e6396791-aaec/
 
 https://elisabeth-ballet-backoffice.sanity.studio/structure
 
-# to do
+# front
 
-<!-- - menus footer -->
-<!-- - page modulaire (mosaic projets) -->
-<!-- - about -->
+https://elisabeth-ballet.vercel.app/
+
+# to do
 
 # questions
 

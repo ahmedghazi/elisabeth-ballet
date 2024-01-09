@@ -8,7 +8,7 @@ const TexteUI = ({ input }) => {
   const { text, width, offset } = input;
 
   return (
-    <section className='module module--text mb-xl'>
+    <section className='module module--text mb-xl bg-white'>
       <div className='row no-gutter-'>
         <div
           className={clsx(`col-md-${width} col-md-offset-${offset} col-xs-12`)}>
