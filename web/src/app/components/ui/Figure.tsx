@@ -12,7 +12,12 @@ type Props = {
 
 const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
   return (
-    <figure>
+    <figure
+      style={{
+        aspectRatio: `${asset?.metadata?.dimensions.width} / ${asset?.metadata?.dimensions.height}`,
+        width: "100%",
+        height: "auto",
+      }}>
       <Image
         src={urlFor(asset, width)}
         width={asset?.metadata?.dimensions.width || width}
