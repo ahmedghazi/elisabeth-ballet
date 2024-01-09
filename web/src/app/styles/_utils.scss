@@ -9,6 +9,7 @@ figure img {
   image-rendering: -moz-crisp-edges;
   image-rendering: pixelated;
   display: block;
+  background-size: contain !important;
 }
 
 // .hidden {
