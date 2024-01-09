@@ -1,6 +1,14 @@
 img {
   max-width: 100%;
 }
+figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+}
 
 // .hidden {
 //   display: none;
@@ -89,9 +97,13 @@ ul.list-with-comma {
 .scrollable {
   overflow-y: auto;
   height: calc(100vh - toRem(24) * 2);
-  @include scrollbars(15px, black, white);
+  @include scrollbars(15px, black, transparent);
   padding-right: 15px;
   scroll-behavior: smooth;
+
+  &.column--media {
+    padding-right: 0;
+  }
   @media (max-width: $md) {
     height: calc(100vh - 57px);
     padding-top: toRem(17, 16);

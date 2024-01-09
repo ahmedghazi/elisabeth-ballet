@@ -29,11 +29,27 @@
 
   .scrollable {
     padding-bottom: var(--space-xl);
+    &.column--text {
+      padding-bottom: 182px;
+    }
   }
   .total {
     position: absolute;
     top: var(--space-md);
     left: 1.4em;
+  }
+  .index-wrapper {
+    // position: absolute;
+    // left: 0;
+    // top: 0;
+  }
+  @media all and (min-width: $md) {
+    .media-item {
+      // padding-left: 3rem;
+      figure {
+        flex-shrink: 0;
+      }
+    }
   }
   // @media all and (max-width: $md) {
   //   .scrollable:first-child {

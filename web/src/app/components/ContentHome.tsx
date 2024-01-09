@@ -18,9 +18,8 @@ const ContentHome = ({ input }: Props) => {
       : input.featuredProjects;
   return (
     <div className='content--home'>
-      <div className='scrollable '>
-        <ProjectsGrid input={data} />
-      </div>
+      {/* <div className='scrollable '></div> */}
+      <ProjectsGrid input={data} />
     </div>
   );
 };

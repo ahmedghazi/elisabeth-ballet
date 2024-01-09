@@ -98,8 +98,10 @@ const ContentProject = ({ input }: Props) => {
 
                 {input.media?.length &&
                   input.media.map((item, i) => (
-                    <div key={item._key} className='mb-md flex gap-lg'>
-                      <div className='pr-md hidden-sm'>
+                    <div
+                      key={item._key}
+                      className='mb-md flex gap-lg media-item'>
+                      <div className='pr-md hidden-sm index-wrapper'>
                         <div className='sticky top-md'>
                           {i < 10 ? `0${i + 1}` : i}
                         </div>
