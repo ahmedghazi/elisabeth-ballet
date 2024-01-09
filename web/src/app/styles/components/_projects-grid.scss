@@ -1,3 +1,9 @@
 .projects-grid {
   column-gap: toRem(45);
 }
+
+@media all and (max-width: $sm) {
+  .projects-grid {
+    padding-top: toRem(17);
+  }
+}

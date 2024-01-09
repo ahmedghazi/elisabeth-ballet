@@ -35,6 +35,7 @@ body {
   // background-size: calc(100% - var(--space-lg));
   // background-position: toRem(16);
   // background-repeat: no-repeat;
+  pointer-events: none;
   position: fixed;
   width: calc(100% / 7 * 6);
   height: 100vh;

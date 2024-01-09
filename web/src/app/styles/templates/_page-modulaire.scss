@@ -34,4 +34,8 @@
 }
 
 @media all and (max-width: $sm) {
+  [data-template="is-page-modulaire"] {
+    main {
+    }
+  }
 }

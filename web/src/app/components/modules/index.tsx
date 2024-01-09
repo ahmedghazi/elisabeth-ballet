@@ -33,7 +33,7 @@ const Modules = ({ input }: any) => {
     return _modules;
   };
 
-  return <div className='modules flex flex-wrap '>{_renderModules()}</div>;
+  return <div className='modules flex- flex-wrap '>{_renderModules()}</div>;
 };
 
 export default Modules;

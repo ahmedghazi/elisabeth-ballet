@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Project } from "../types/schema";
 import ProjectCard from "./ProjectCard";
 import { usePageContext } from "../context/PageContext";
+import clsx from "clsx";
 
 type Props = {
   input: Project[] | any;
@@ -33,10 +34,15 @@ const ProjectsGrid = ({ input }: Props) => {
 
   // console.log(input);
   return (
-    <div className='projects-grid grid gap-x-md gap-y-lg md:grid-cols-6'>
+    <div className='projects-grid md:grid gap-x-md gap-y-lg md:grid-cols-6'>
       {ready &&
         randomGrid.map((item: Project | any, i: number) => (
-          <div key={item._id + "-" + i} className='grid-item'>
+          <div
+            key={item._id + "-" + i}
+            className={clsx(
+              "grid-item mb-lg md:mb-0",
+              item._type === "blank" && "hidden-sm"
+            )}>
             {item._type === "blank" && <article className='blank'></article>}
             {item._type === "project" && <ProjectCard input={item} />}
           </div>
