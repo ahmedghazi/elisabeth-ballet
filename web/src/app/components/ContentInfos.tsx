@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { Infos } from "../types/schema";
 import { _localizeField, _slugify } from "../utils/utils";
 import components from "../utils/portableTextComponents";
@@ -9,14 +9,15 @@ import { usePageContext } from "../context/PageContext";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import ScrollSpy from "./ui/ScrollSpy";
 
 type Props = {
   input: Infos;
 };
 
 const ContentInfos = ({ input }: Props) => {
+  const scrollableRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-
   const cvMenu = input.cv
     ? input.cv.map((item) => {
         return {
@@ -82,34 +83,48 @@ const ContentInfos = ({ input }: Props) => {
             />
           </Link>
         </div>
-        <div className='scrollable md:col-span-4 column--text column--right'>
+        <div
+          className='scrollable md:col-span-4 column--text column--right'
+          ref={scrollableRef}>
           {/* <div className='ghost-spacer bg-white h-md'></div> */}
           <div className='cv text-center mb-md'>
-            {input.cv?.map((item, i) => (
-              <div
-                key={item._key}
-                className='mb-lg cv-group'
-                id={_slugify(_localizeField(item.title))}>
-                <div className='title mb-md'>{_localizeField(item.title)}</div>
-                {item.items?.map((_item, i) => (
-                  <div key={_item._key} className='mb-md'>
-                    <div className='key'>{_item.key}</div>
-                    <div className='val'>
-                      <PortableText
-                        value={_localizeField(_item.val)}
-                        components={components}
-                      />
+            {scrollableRef && (
+              <ScrollSpy
+                parentScrollContainerRef={scrollableRef.current}
+                childrenSelector='.item'>
+                {input.cv?.map((item, i) => (
+                  <div
+                    key={item._key}
+                    className='mb-lg cv-group item'
+                    id={`section--${_slugify(_localizeField(item.title))}`}>
+                    <div className='title mb-md'>
+                      {_localizeField(item.title)}
                     </div>
+                    {item.items?.map((_item, i) => (
+                      <div key={_item._key} className='mb-md'>
+                        <div className='key'>{_item.key}</div>
+                        <div className='val'>
+                          <PortableText
+                            value={_localizeField(_item.val)}
+                            components={components}
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 ))}
-              </div>
-            ))}
+              </ScrollSpy>
+            )}
           </div>
 
           <div className='media'>
             {input.media?.length &&
               input.media.map((item, i) => (
-                <div key={item._key} className='mb-md'>
+                <div
+                  key={item._key}
+                  className={
+                    input.media && i < input.media?.length - 1 ? "mb-md" : ""
+                  }>
                   <Figure
                     asset={item.asset}
                     width={500}

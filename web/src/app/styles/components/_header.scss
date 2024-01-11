@@ -1,7 +1,9 @@
 header {
-  .is-current {
+  .is-current,
+  .active-scroll-spy {
     text-align: right;
     display: block;
+    // color: red;
   }
   .search {
     display: none;

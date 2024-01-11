@@ -26,6 +26,7 @@ const Wrapper = styled.div<WrapperProps>`
     /* border-radius: 100%; */
     background: ${(props) => props.color};
     transition: background-color 150ms ease, transform 150ms ease-out;
+    border: 1px solid ${(props) => props.color};
   }
   svg {
     opacity: 0;
@@ -33,6 +34,7 @@ const Wrapper = styled.div<WrapperProps>`
   &.is-anchor-or-button {
     .dot {
       transform: scale(2.2);
+      background-color: transparent;
     }
   }
   &.is-mousedown {

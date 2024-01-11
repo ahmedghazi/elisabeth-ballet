@@ -1,6 +1,21 @@
+[data-template="is-infos"] {
+  overflow: hidden;
+  @media all and (min-width: $md) {
+    main {
+      padding-top: 0;
+      padding-bottom: 0;
+      .scrollable {
+        height: 100vh;
+        padding-top: var(--space-md);
+        padding-bottom: var(--space-md);
+      }
+    }
+  }
+}
+
 .template--infos {
   .cv-group {
-    scroll-padding-top: toRem(24);
+    scroll-padding-top: calc(var(--space-md) + toRem(24));
   }
 }
 

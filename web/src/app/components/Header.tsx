@@ -8,6 +8,7 @@ import { _linkResolver, _localizeField } from "../utils/utils";
 import { usePathname } from "next/navigation";
 import Search from "./ui/Search";
 import { usePageContext } from "../context/PageContext";
+import NavInfos from "./NavInfos";
 
 type Props = {
   settings: Settings;
@@ -35,19 +36,16 @@ const Header = ({ settings }: Props) => {
                   }>
                   {_localizeField(item.label)}
                 </Link>
+                {item._type === "linkInternal" &&
+                  item.link &&
+                  item.link.slug &&
+                  item.link.slug.current &&
+                  item.link.slug.current === "infos" &&
+                  navInfos &&
+                  navInfos.length > 0 && <NavInfos />}
               </li>
             ))}
           </ul>
-
-          {navInfos && navInfos.length > 0 && (
-            <ul className='nav-infos mb-md'>
-              {navInfos.map((item, i) => (
-                <li key={item.slug}>
-                  <Link href={`#${item.slug}`}>{item.title}</Link>
-                </li>
-              ))}
-            </ul>
-          )}
 
           <LocalesSwitcher />
           <Search />
