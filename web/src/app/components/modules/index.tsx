@@ -2,9 +2,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
 const TexteUI = dynamic(() => import("./TexteUI"), { ssr: false });
-// const ImageUI = dynamic(() => import("./ImageUI"), { ssr: false });
-// const ImagesUI = dynamic(() => import("./ImagesUI"), { ssr: false });
-// const EmbedUI = dynamic(() => import("./EmbedUI"), { ssr: false });
 
 import "./index.scss";
 import Projects from "./Projects";
@@ -17,14 +14,9 @@ const Modules = ({ input }: any) => {
       switch (module._type) {
         case "moduleText":
           return <TexteUI key={module._key} input={module} />;
-        // case "moduleImage":
-        //   return <ImageUI key={module._key} input={module} />;
-        // case "moduleImages":
-        //   return <ImagesUI key={module._key} input={module} />;
+
         case "moduleProjects":
           return <Projects key={module._key} input={module} />;
-        // case "moduleEmbed":
-        //   return <EmbedUI key={module._key} input={module} />;
 
         default:
           return null;
