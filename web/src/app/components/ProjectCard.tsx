@@ -6,37 +6,41 @@ import Figure from "./ui/Figure";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import components from "../utils/portableTextComponents";
-import { motion, useAnimation, useAnimationControls } from "framer-motion";
-import { subscribe, unsubscribe } from "pubsub-js";
+// import { motion, useAnimation, useAnimationControls } from "framer-motion";
+// import { subscribe, unsubscribe } from "pubsub-js";
+import { usePathname } from "next/navigation";
+import website from "../config/website";
 
 type Props = {
   input: Project | any;
 };
 
 const ProjectCard = ({ input }: Props) => {
-  const controls = useAnimationControls();
-  const variants = {
-    show: (custom: number) => ({
-      opacity: 1,
-      transition: { delay: custom },
-    }),
-  };
+  // const controls = useAnimationControls();
+  const pathname = usePathname();
 
-  useEffect(() => {
-    if (
-      !document.body.classList.contains("is-loading") ||
-      window.innerWidth < 1080
-    ) {
-      controls.start("show");
-    }
-    const token = subscribe("REVEAL", () => {
-      controls.start("show");
-    });
+  // const variants = {
+  //   show: (custom: number) => ({
+  //     opacity: 1,
+  //     transition: { delay: custom },
+  //   }),
+  // };
 
-    return () => {
-      unsubscribe(token);
-    };
-  }, []);
+  // useEffect(() => {
+  //   if (
+  //     !document.body.classList.contains("is-loading") ||
+  //     window.innerWidth < 1080
+  //   ) {
+  //     controls.start("show");
+  //   }
+  //   const token = subscribe("REVEAL", () => {
+  //     controls.start("show");
+  //   });
+
+  //   return () => {
+  //     unsubscribe(token);
+  //   };
+  // }, []);
 
   return (
     <article className='project-card'>
@@ -46,7 +50,7 @@ const ProjectCard = ({ input }: Props) => {
         animate={controls}
         variants={variants}
         transition={{ duration: 0.5, type: "tween" }}> */}
-      <Link href={_linkResolver(input)}>
+      <Link href={`${_linkResolver(input)}?referer=${pathname}`}>
         <Figure
           asset={input.imageCover?.asset}
           width={30600}

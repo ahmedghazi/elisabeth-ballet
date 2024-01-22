@@ -44,7 +44,7 @@ const ScrollSpy = ({
 
   const isVisible = function (el: HTMLDivElement | Element) {
     const rect: DOMRect = el.getBoundingClientRect();
-    return rect.top <= 0 && rect.bottom >= window.innerHeight / 2;
+    return rect.top <= 20 && rect.bottom >= window.innerHeight / 3;
   };
 
   return <div className='scroll-spy-wrapper'>{children}</div>;

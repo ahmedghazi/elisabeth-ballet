@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Settings } from "../types/schema";
 import LocalesSwitcher from "./ui/LocaleSwitcher";
 import Link from "next/link";
 import website from "../config/website";
 import { _linkResolver, _localizeField } from "../utils/utils";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import Search from "./ui/Search";
 import { usePageContext } from "../context/PageContext";
 import NavInfos from "./NavInfos";
@@ -15,9 +15,36 @@ type Props = {
 };
 
 const Header = ({ settings }: Props) => {
-  const pathname = usePathname();
   const { navInfos } = usePageContext();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const ref = useRef<HTMLUListElement>(null);
   // console.log(navInfos);
+
+  useEffect(() => {
+    if (!ref) return;
+
+    // const urlParams = new URLSearchParams(window.location.search);
+    const refererUrlParam = searchParams.get("referer");
+    if (!refererUrlParam) return;
+    const referer = _getrefererUrlFull(refererUrlParam);
+    console.log(referer);
+    const lis = ref.current?.querySelectorAll("li");
+    lis?.forEach((el) => {
+      const a = el.querySelector("a");
+      if (a) {
+        const href = a.href;
+        el.classList.toggle("is-current", href === referer);
+
+        console.log(href);
+      }
+    });
+  }, [pathname, searchParams]);
+
+  const _getrefererUrlFull = (referer: string) => {
+    const refererUrlFull: string = `${location.protocol}//${location.host}${referer}`;
+    return refererUrlFull;
+  };
   return (
     <header>
       <div className=''>
@@ -26,11 +53,11 @@ const Header = ({ settings }: Props) => {
         </div>
         <nav>
           {/* <pre>{JSON.stringify(settings, null, 2)}</pre> */}
-          <ul className='mb-md-'>
+          <ul ref={ref}>
             {settings.navPrimary?.map((item, i) => (
               <li key={item._key}>
                 <Link
-                  href={_linkResolver(item.link)}
+                  href={`${_linkResolver(item.link)}`}
                   className={
                     pathname === _linkResolver(item.link) ? "is-current" : ""
                   }>
