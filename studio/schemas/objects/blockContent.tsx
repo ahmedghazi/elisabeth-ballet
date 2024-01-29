@@ -1,6 +1,8 @@
 import {defineType, defineArrayMember} from 'sanity'
 // import { FiExternalLink, LinkIcon } from 'react-icons/fi'
-import {LinkIcon} from '@sanity/icons'
+// import { LinkIcon } from '@sanity/icons'
+import {TbLink, TbExternalLink} from 'react-icons/tb'
+
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -63,7 +65,7 @@ export default defineType({
             title: 'Internal link',
             name: 'linkInternal',
             type: 'object',
-            icon: LinkIcon,
+            icon: TbLink,
             fields: [
               {
                 name: 'reference',
@@ -78,7 +80,7 @@ export default defineType({
             title: 'External link',
             name: 'linkExternal',
             type: 'object',
-            icon: LinkIcon,
+            icon: TbExternalLink,
             fields: [
               {
                 title: 'URL',

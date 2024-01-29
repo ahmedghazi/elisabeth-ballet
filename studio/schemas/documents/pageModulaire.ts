@@ -71,6 +71,12 @@ export default defineType({
       group: 'editorial',
     }),
     defineField({
+      name: 'textAside',
+      type: 'localeBlockContent',
+      title: 'Text sidebar (ex for credits)',
+      group: 'editorial',
+    }),
+    defineField({
       name: 'modules',
       title: 'Modules',
       description: 'Zone de contenu Modulaire (images, textes, embed)',

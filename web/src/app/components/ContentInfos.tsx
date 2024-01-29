@@ -75,12 +75,26 @@ const ContentInfos = ({ input }: Props) => {
             </div>
           </div>
           <Link href='/' className='back' onClick={() => router.back()}>
-            <Image
+            {/* <Image
               src={"/arrow-sw.svg"}
               width={120}
               height={88}
               alt={"back home — retour à l'accueil"}
-            />
+            /> */}
+            <svg
+              version='1.1'
+              id='Calque_1'
+              xmlns='http://www.w3.org/2000/svg'
+              width={113}
+              height={136}
+              x='0px'
+              y='0px'
+              viewBox='0 0 113.7 136.7'>
+              <line id='Ligne_1' x1='0.7' y1='88' x2='112.7' y2='88' />
+              <line id='Ligne_2' x1='0.7' y1='88' x2='48.7' y2='40' />
+              <path id='Tracé_39' d='M0.7,88l48,48' />
+              <line id='Ligne_4' x1='112.7' y1='0' x2='112.7' y2='88' />
+            </svg>
           </Link>
         </div>
         <div

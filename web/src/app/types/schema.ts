@@ -242,6 +242,13 @@ export interface PageModulaire extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
+   * Text sidebar (ex for credits) — `localeBlockContent`
+   *
+   *
+   */
+  textAside?: LocaleBlockContent;
+
+  /**
    * Modules — `array`
    *
    * Zone de contenu Modulaire (images, textes, embed)

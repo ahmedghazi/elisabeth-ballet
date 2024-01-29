@@ -1,13 +1,23 @@
+"use client";
 import React from "react";
-import { _localizeText } from "../utils/utils";
+import { _localizeField, _localizeText } from "../utils/utils";
+import { PortableText } from "@portabletext/react";
+import { LocaleBlockContent } from "../types/schema";
+import portableTextComponents from "@/app/utils/portableTextComponents";
 
-type Props = {};
+type Props = {
+  text: LocaleBlockContent;
+};
 
-const Credits = (props: Props) => {
+const Credits = ({ text }: Props) => {
   // const {};
   return (
     <div className='credits'>
-      <p>
+      <PortableText
+        value={_localizeField(text)}
+        components={portableTextComponents}
+      />
+      {/* <p>
         code —{" "}
         <a
           href='https://ahmedghazi.com/'
@@ -24,7 +34,7 @@ const Credits = (props: Props) => {
           rel='noopener noreferrer'>
           Syndicat
         </a>
-      </p>
+      </p> */}
     </div>
   );
 };

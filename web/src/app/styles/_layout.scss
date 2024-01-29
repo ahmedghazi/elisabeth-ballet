@@ -95,6 +95,12 @@ main {
   position: fixed;
   bottom: var(--space-md);
   left: var(--space-md);
+  path,
+  line {
+    fill: black;
+    stroke-width: 1;
+    stroke: #000;
+  }
 }
 
 @media all and (min-width: $md) {
