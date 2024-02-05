@@ -19,13 +19,13 @@ const Wrapper = styled.div<WrapperProps>`
   pointer-events: none;
   will-change: transform;
   /* mix-blend-mode: difference; */
-  transition: transform 150ms ease-out;
+  /* transition: transform 150ms ease; */
   .dot {
     width: ${(props) => props.size}px;
     height: ${(props) => props.size}px;
     /* border-radius: 100%; */
     background: ${(props) => props.color};
-    transition: background-color 150ms ease, transform 150ms ease-out;
+    transition: background-color 150ms ease, transform 150ms ease;
     border: 0.5px solid ${(props) => props.color};
   }
   svg {
@@ -97,6 +97,7 @@ const Cursor = ({ color, size }: CProps) => {
     if (isTouch) return;
 
     const __isAnchorOrButton = _getIsAnchorOrButton(e.target as Element);
+    // console.log(__isAnchorOrButton);
     setIsAnchorOrButton(__isAnchorOrButton);
 
     const __isInput = false;
