@@ -1,12 +1,11 @@
-import ContentProject from "@/app/components/ContentProject";
-// import PreJson from "@/app/components/ui/PreJson";
+import React from "react";
 import website from "@/app/config/website";
 import { Project } from "@/app/types/schema";
 import { getProject, projectQuery } from "@/app/utils/sanity-queries";
 import { Metadata } from "next";
-import React from "react";
 import { draftMode } from "next/headers";
 import { getClient } from "@/app/utils/sanity-client";
+import ContentProject from "@/app/components/ContentProject";
 
 type PageProps = {
   params: {
@@ -30,8 +29,6 @@ export async function generateMetadata({
 const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   params,
 }) => {
-  // const data = await getProject(params.slug);
-  // console.log(params.slug);
   const { isEnabled: preview } = draftMode();
   let data: Project;
   if (preview) {
@@ -40,14 +37,13 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
       params
     );
   } else {
-    data = (await getProject(params.slug)) as Project;
+    data = await getProject(params.slug);
   }
 
   if (!data) return <div>please edit page</div>;
   return (
     <div className='template--project' data-template='project'>
       <ContentProject input={data} />
-      {/* <PreJson input={data} /> */}
     </div>
   );
 };

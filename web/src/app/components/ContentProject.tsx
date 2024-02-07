@@ -6,9 +6,7 @@ import { PortableText } from "@portabletext/react";
 import components from "../utils/portableTextComponents";
 import Figure from "./ui/Figure";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-// import useRouteUrlHistory from "../hooks/useRouteUrlHistory";
 
 type Props = {
   input: Project;
@@ -16,15 +14,13 @@ type Props = {
 
 const ContentProject = ({ input }: Props) => {
   const router = useRouter();
-  // console.log(router.back());
+
   console.log(input.media);
   return (
     <div className='content--project'>
-      {/* <pre>{JSON.stringify(input.media, null, 2)}</pre> */}
       <div className='grid grid-cols-2 md:gap-lg'>
         <div className='scrollable column--text column--left'>
           <div className='inner pr-md bg-white'>
-            {/* <div className='ghost-spacer bg-white h-md'></div> */}
             <div className='flex gap-sm'>
               <div className='locale-side-note hidden-sm'>
                 <div className='sticky top-md'>Fr</div>
@@ -76,12 +72,6 @@ const ContentProject = ({ input }: Props) => {
           </div>
 
           <Link href='/' className='back' onClick={() => router.back()}>
-            {/* <Image
-              src={"/arrow-sw.svg"}
-              width={120}
-              height={88}
-              alt={"back home — retour à l'accueil"}
-            /> */}
             <svg
               version='1.1'
               id='Calque_1'

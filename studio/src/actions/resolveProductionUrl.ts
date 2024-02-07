@@ -1,4 +1,4 @@
-const remoteURL = 'https://elisabeth-ballet.vercel.app/api/preview'
+const remoteURL = 'https://elisabethballet.net/api/preview'
 const localURL = 'http://localhost:3000/api/preview'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 

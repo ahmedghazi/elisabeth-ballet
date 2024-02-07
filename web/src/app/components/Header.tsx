@@ -28,7 +28,7 @@ const Header = ({ settings }: Props) => {
     const refererUrlParam = searchParams.get("referer");
     if (!refererUrlParam) return;
     const referer = _getrefererUrlFull(refererUrlParam);
-    console.log(referer);
+    // console.log(referer);
     const lis = ref.current?.querySelectorAll("li");
     lis?.forEach((el) => {
       const a = el.querySelector("a");
@@ -36,7 +36,7 @@ const Header = ({ settings }: Props) => {
         const href = a.href;
         el.classList.toggle("is-current", href === referer);
 
-        console.log(href);
+        // console.log(href);
       }
     });
   }, [pathname, searchParams]);
