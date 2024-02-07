@@ -9,6 +9,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import Search from "./ui/Search";
 import { usePageContext } from "../context/PageContext";
 import NavInfos from "./NavInfos";
+import { publish } from "pubsub-js";
 
 type Props = {
   settings: Settings;
@@ -45,11 +46,21 @@ const Header = ({ settings }: Props) => {
     const refererUrlFull: string = `${location.protocol}//${location.host}${referer}`;
     return refererUrlFull;
   };
+
+  const _handleSameUrl = (url: string) => {
+    // console.log(url, pathname);
+    if (url === pathname) {
+      publish("BURGER.CLOSE");
+    }
+  };
+
   return (
     <header>
       <div className=''>
         <div className='site-name'>
-          <Link href={"/"}>{website.title}</Link>
+          <Link href={"/"} onClick={() => _handleSameUrl("/")}>
+            {website.title}
+          </Link>
         </div>
         <nav>
           {/* <pre>{JSON.stringify(settings, null, 2)}</pre> */}
@@ -58,6 +69,7 @@ const Header = ({ settings }: Props) => {
               <li key={item._key}>
                 <Link
                   href={`${_linkResolver(item.link)}`}
+                  onClick={() => _handleSameUrl(_linkResolver(item.link))}
                   className={
                     pathname === _linkResolver(item.link) ? "is-current" : ""
                   }>
