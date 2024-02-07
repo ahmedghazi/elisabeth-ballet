@@ -17,7 +17,7 @@ type Props = {
 const ContentProject = ({ input }: Props) => {
   const router = useRouter();
   // console.log(router.back());
-
+  console.log(input.media);
   return (
     <div className='content--project'>
       {/* <pre>{JSON.stringify(input.media, null, 2)}</pre> */}
