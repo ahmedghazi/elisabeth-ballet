@@ -27,9 +27,11 @@ body {
       opacity: 0.5;
     }
   }
-  &.has-custom-cursor {
-    * {
-      cursor: none;
+  @media all and (min-width: $md) {
+    &.has-custom-cursor {
+      * {
+        cursor: none;
+      }
     }
   }
 }

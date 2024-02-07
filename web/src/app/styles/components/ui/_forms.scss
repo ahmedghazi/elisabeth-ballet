@@ -9,6 +9,11 @@ textarea {
   //max-width: 150px;
   // margin-right: .3em;
   // line-height: 38px;
+  &:focus {
+    &::placeholder {
+      color: red;
+    }
+  }
 }
 #{$all-text-inputs-focus},
 textarea:focus {

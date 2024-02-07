@@ -8,6 +8,7 @@ import React, {
 import { usePageContext } from "@/app/context/PageContext";
 import { _localizeText } from "@/app/utils/utils";
 import { usePathname } from "next/navigation";
+import { publish } from "pubsub-js";
 // import debounce from "lodash.debounce";
 
 type Props = {};
@@ -47,6 +48,7 @@ const Search = (props: Props) => {
       // console.log(data);
       if (setSearchResult) setSearchResult(data);
       document.body.classList.remove("is-fetching");
+      publish("BURGER.CLOSE");
     } catch (error: any) {
       console.log(error);
     }
