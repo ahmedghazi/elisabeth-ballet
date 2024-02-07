@@ -14,7 +14,10 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [deskTool({structure: structure}), media(), visionTool()],
-
+  document: {
+    // productionUrl: resolveProductionUrl,
+    actions: [resolveProductionUrl],
+  },
   schema: {
     types: schemaTypes,
   },
