@@ -153,7 +153,8 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
 
 }`;
 export async function getProject(slug: string): Promise<Project> {
-  return client.fetch(projectQuery, { slug: slug });
+  // return client.fetch(projectQuery, { slug: slug });
+  return cachedClient(projectQuery, { slug: slug });
 }
 
 export const projectsCardQuery = groq`
