@@ -85,9 +85,9 @@ export const PageContextProvider = (props: PageContextProps) => {
       // console.log(template);
 
       document.body.dataset.template = `is-${template}`;
-      document.body.classList.remove("is-loading");
       // setTimeout(() => {}, 1000);
     }
+    document.body.classList.remove("is-loading");
   };
 
   return (

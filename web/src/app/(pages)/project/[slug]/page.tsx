@@ -43,7 +43,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
     data = await getProject(params.slug);
   }
 
-  if (!data) return <div>please edit page</div>;
+  if (!data) return <div className='py-md'>Page not found</div>;
   return (
     <div className='template--project' data-template='project'>
       <ContentProject input={data} />

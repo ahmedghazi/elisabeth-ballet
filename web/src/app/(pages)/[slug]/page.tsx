@@ -46,7 +46,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
     data = (await getPageModulaire(params.slug)) as PageModulaire;
   }
 
-  if (!data) return <div>please edit page</div>;
+  if (!data) return <div className='py-md'>Page not found</div>;
   return (
     <div className='template--page-modulaire' data-template='page-modulaire'>
       <ContentPage input={data} />

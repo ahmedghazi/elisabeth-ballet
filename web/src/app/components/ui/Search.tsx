@@ -55,9 +55,11 @@ const Search = (props: Props) => {
   };
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
     if (event.target.value) {
       setTerm(event.target?.value);
     } else {
+      setTerm("");
       if (setSearchResult) setSearchResult([]);
     }
   };
