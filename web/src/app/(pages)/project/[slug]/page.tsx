@@ -13,6 +13,8 @@ type PageProps = {
   };
 };
 
+export const revalidate = 3600; // revalidate every hour
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
