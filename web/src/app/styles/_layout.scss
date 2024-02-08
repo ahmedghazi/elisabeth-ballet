@@ -38,10 +38,6 @@ body {
 #page {
 }
 .bg {
-  // background: url("/ballet-bg-desktop.svg");
-  // background-size: calc(100% - var(--space-lg));
-  // background-position: toRem(16);
-  // background-repeat: no-repeat;
   pointer-events: none;
   position: fixed;
   width: calc(100% / 7 * 6);
@@ -51,8 +47,6 @@ body {
     fill: none;
     stroke: #2b2e34;
     stroke-width: 1.296;
-    // opacity: 0;
-    // transition: opacity 0.2s ease;
   }
 }
 .page-layout {
@@ -71,7 +65,6 @@ body {
   }
 }
 main {
-  // min-height: var(--app-height, 100vh);
   position: relative;
   transition: opacity 0.2s ease;
 }
@@ -80,23 +73,9 @@ main {
   height: var(--app-height);
 }
 
-// [data-template="is-page-modulaire"] .bg,
 [data-template="is-infos"] .bg {
   opacity: 0;
 }
-
-// [data-template="is-infos"] .page-layout,
-// [data-template="is-project"] .page-layout {
-//   padding-top: 0;
-//   main {
-//     padding-top: toRem(24);
-//     padding-top: 0;
-//   }
-//   aside,
-//   .about.sticky {
-//     top: toRem(0);
-//   }
-// }
 
 .back {
   position: fixed;
@@ -125,12 +104,6 @@ main {
   }
 
   .bg {
-    // background: url("/ballet-bg-mobile.svg");
-    // background-repeat: no-repeat;
-    // background-size: calc(100% - var(--space-lg));
-    // background-position: toRem(17, 18)
-    //   calc(var(--header-height) + toRem(16, 18));
-    // width: 100%;
     padding-top: calc(var(--header-height, 57px) + toRem(16, 18));
     width: 100%;
     path {
@@ -146,6 +119,7 @@ main {
   [data-template="is-infos"] .page-layout,
   [data-template="is-project"] .page-layout {
     width: calc((100vw - toRem(30, 18)) * 2);
+    width: calc((100vw - toRem(16, 18)) * 2);
   }
   .page-layout {
     aside {
@@ -155,6 +129,7 @@ main {
     main {
       order: 2;
       padding: toRem(16, 18) toRem(30, 18);
+      padding: toRem(16, 18) toRem(16, 18);
       padding-top: toRem(57, 18) !important;
       padding-bottom: 0;
     }

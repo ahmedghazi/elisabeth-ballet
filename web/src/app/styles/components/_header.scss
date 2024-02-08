@@ -1,4 +1,5 @@
 header {
+  // background-color: red;
   .is-current,
   .active-scroll-spy {
     text-align: right;
@@ -9,6 +10,10 @@ header {
     display: none;
   }
   @media all and (max-width: $md) {
+    // background-color: orange;
+    nav {
+      margin-bottom: 2em;
+    }
   }
 }
 

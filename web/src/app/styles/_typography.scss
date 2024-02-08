@@ -130,8 +130,11 @@ input {
     width: 100%;
     padding-right: 0;
     transform: translateX(0.5em);
-    &:focus::placeholder {
-      color: white;
+    &:focus {
+      border: 1px solid;
+      &::placeholder {
+        color: white;
+      }
     }
   }
   &::placeholder {

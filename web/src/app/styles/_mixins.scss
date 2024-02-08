@@ -295,31 +295,12 @@ $sass-burger-add-vendor-prefixes: true !default;
   }
   //burger(40px, 4px, 8px)
   $burger-gutter: 5px;
-  $burger-height: 4px;
+  $burger-height: 2.5px;
   &::before {
-    // @if $sass-burger-add-vendor-prefixes {
-    //   -webkit-transform: translateY($burger-gutter + $burger-height)
-    //     rotate(25deg);
-    //   -moz-transform: translateY($burger-gutter + $burger-height) rotate(25deg);
-    //   -ms-transform: translateY($burger-gutter + $burger-height) rotate(25deg);
-    //   -o-transform: translateY($burger-gutter + $burger-height) rotate(25deg);
-    // }
-
     transform: translateY($burger-gutter + $burger-height) rotate(45deg);
   }
 
   &::after {
-    // @if $sass-burger-add-vendor-prefixes {
-    //   -webkit-transform: translateY(-($burger-gutter + $burger-height))
-    //     rotate(-25deg);
-    //   -moz-transform: translateY(-($burger-gutter + $burger-height))
-    //     rotate(-25deg);
-    //   -ms-transform: translateY(-($burger-gutter + $burger-height))
-    //     rotate(-25deg);
-    //   -o-transform: translateY(-($burger-gutter + $burger-height))
-    //     rotate(-25deg);
-    // }
-
     transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
   }
 }

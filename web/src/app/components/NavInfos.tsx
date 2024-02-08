@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { usePageContext } from "../context/PageContext";
 import Link from "next/link";
+import { publish } from "pubsub-js";
 
 type Props = {};
 
@@ -14,6 +15,10 @@ const NavInfos = (props: Props) => {
     setReady(true);
   }, []);
 
+  const _handleCloseBurger = () => {
+    publish("BURGER.CLOSE");
+  };
+
   return (
     <div className='nav-infos mb-md'>
       {ready && navInfos && navInfos.length > 0 && (
@@ -21,6 +26,7 @@ const NavInfos = (props: Props) => {
           {navInfos.map((item, i) => (
             <li key={item.slug} className='mb-05e'>
               <Link
+                onClick={() => _handleCloseBurger()}
                 href={`#section--${item.slug}`}
                 data-scrollspy={`section--${item.slug}`}>
                 {item.title}
