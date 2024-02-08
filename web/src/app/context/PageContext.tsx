@@ -79,7 +79,7 @@ export const PageContextProvider = (props: PageContextProps) => {
     const mainDiv: HTMLElement = document.querySelector(
       "main [data-template]"
     ) as HTMLElement;
-    // console.log(mainDiv);
+    console.log(mainDiv);
     if (mainDiv) {
       const template = mainDiv.dataset.template;
       // console.log(template);
