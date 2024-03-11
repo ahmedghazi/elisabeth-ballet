@@ -73,15 +73,21 @@ const Search = (props: Props) => {
 
   return (
     <form className='search' onSubmit={_handleSubmit}>
-      <input
-        type='search'
-        placeholder={_localizeText("search")}
-        name='term'
-        // onChange={changeHandler}
-        onInput={changeHandler}
-        value={term}
-      />
-      {/* <div className='py-md bg-red'>term: {term}</div> */}
+      <div className='flex justify-between'>
+        <div>
+          <input
+            type='search'
+            placeholder={_localizeText("search")}
+            name='term'
+            // onChange={changeHandler}
+            onInput={changeHandler}
+            value={term}
+            className='flex-2'
+          />
+        </div>
+        <input type='submit' value='OK' />
+        {/* <div className='py-md bg-red'>term: {term}</div> */}
+      </div>
     </form>
   );
 };
