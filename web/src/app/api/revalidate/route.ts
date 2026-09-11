@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
 
     const tags = [body._type, ...(FANOUT_TAGS[body._type] ?? [])];
     tags.forEach((tag) => revalidateTag(tag, { expire: 0 }));
-
+    console.log("Revalidating tags:", tags);
     return NextResponse.json({ revalidated: true, tags, now: Date.now() });
   } catch (err) {
     console.error("[sanity-revalidate] failed:", err);
