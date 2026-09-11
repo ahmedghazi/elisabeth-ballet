@@ -1,3 +1,6 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
 aside {
   height: 100vh;
   text-align: center;

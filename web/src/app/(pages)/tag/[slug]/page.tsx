@@ -2,11 +2,11 @@ import ContentProject from "@/app/components/ContentProject";
 // import PreJson from "@/app/components/ui/PreJson";
 import website from "@/app/config/website";
 import { Project } from "@/app/types/schema";
-import { getProject, projectQuery } from "@/app/utils/sanity-queries";
+import { getProject, PROJECT_QUERY } from "@/app/utils/sanity-queries";
 import { Metadata } from "next";
-import React from "react";
+import React, { JSX } from "react";
 import { draftMode } from "next/headers";
-import { getClient } from "@/app/utils/sanity-client";
+import { getClient } from "@/app/utils/sanity.client";
 
 type PageProps = {
   params: {
@@ -32,12 +32,12 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
 }) => {
   // const data = await getProject(params.slug);
   // console.log(params.slug);
-  const { isEnabled: preview } = draftMode();
+  const { isEnabled: preview } = await draftMode();
   let data: Project;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      projectQuery,
-      params
+      PROJECT_QUERY,
+      params,
     );
   } else {
     data = (await getProject(params.slug)) as Project;

@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 @font-face {
   font-family: "arial-black";
   src: url("./fonts/arial-black.woff") format("woff");
@@ -55,6 +57,7 @@ h5,
 h6 {
   // font-size: var(--text-md);
   font-weight: normal;
+  font-size: inherit;
 }
 .headline {
   margin-bottom: 1rem;
@@ -65,6 +68,7 @@ h6 {
 a,
 a[aria-current="page"] {
   text-decoration: none;
+  color: var(--color-primary);
   &:hover,
   &:focus,
   &:active {
@@ -105,7 +109,10 @@ a[aria-current="page"] {
 }
 
 .tabnum {
-  font-feature-settings: "tnum" on, "lnum" on, "case" on;
+  font-feature-settings:
+    "tnum" on,
+    "lnum" on,
+    "case" on;
 }
 
 .strong,

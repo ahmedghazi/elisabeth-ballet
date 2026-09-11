@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1080px;
+  --breakpoint-lg: 1600px;
+
+  --color-*: initial;
+  --color-primary: #000;
+  --color-white: white;
+  --color-black: #000;
+  --color-red: #ff0000;
+
+  --spacing-*: initial;
+  --spacing-0: 0;
+  --spacing-1: 1px;
+  --spacing-05e: 0.5em;
+  --spacing-1e: 1em;
+  --spacing-1re: 1rem;
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+  --spacing-xl: var(--space-xl);
+  --spacing-gutter: var(--gutter);
+  --spacing-header-height: var(--header-height);
+
+  --text-sm: 0.86666667rem;
+  --text-sm--line-height: 1.2;
+  --text-md: 0.815rem;
+  --text-md--line-height: 1.2;
+  --text-lg: 2.5rem;
+  --text-lg--line-height: 1;
+  --text-xl: clamp(26px, 5.21vw, 75px);
+  --text-xl--line-height: 1.13;
+}

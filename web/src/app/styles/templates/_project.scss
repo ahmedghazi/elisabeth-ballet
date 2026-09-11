@@ -1,3 +1,6 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
 [data-template="is-project"] {
   overflow: hidden;
   .page-layout {

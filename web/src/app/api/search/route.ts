@@ -1,14 +1,13 @@
 // import { client } from "@/app/utils/sanity-client";
 import { NextRequest, NextResponse } from "next/server";
 
-import sanityClient from "@sanity/client";
+import { createClient } from "@sanity/client";
 
-const client = sanityClient({
+const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   apiVersion: "2021-08-29",
   useCdn: true,
-  withCredentials: true,
   token: process.env.SANITY_API_READ_TOKEN,
 });
 
@@ -33,7 +32,16 @@ export async function POST(request: Request) {
       || text.en[].children[].text match $s + "*"
       )
     ]
-    { _type, title, description, imageCover{...,asset->}, slug}`;
+    {
+    _type,
+    slug,
+    title,
+    description,
+    imageCover{
+      ...,
+      asset->
+      },
+    }`;
 
   // const params = { s: s };
 

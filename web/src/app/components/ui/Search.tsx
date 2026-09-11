@@ -45,7 +45,7 @@ const Search = (props: Props) => {
         body: JSON.stringify(body),
       });
       const data = await res.json();
-      // console.log(data);
+      console.log(data);
       if (setSearchResult) setSearchResult(data);
       document.body.classList.remove("is-fetching");
       publish("BURGER.CLOSE");
@@ -54,10 +54,10 @@ const Search = (props: Props) => {
     }
   };
 
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
-    if (event.target.value) {
-      setTerm(event.target?.value);
+  const changeHandler = (event: React.InputEvent<HTMLInputElement>) => {
+    console.log(event.currentTarget.value);
+    if (event.currentTarget.value) {
+      setTerm(event.currentTarget.value);
     } else {
       setTerm("");
       if (setSearchResult) setSearchResult([]);

@@ -1,6 +1,6 @@
-import createImageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 // import { definePreview } from 'next-sanity/preview'
-import { sanityConfig } from "./sanity-client";
+import { sanityConfig } from "./sanity.client";
 import {
   SanityImageAsset,
   SanityImageCrop,
@@ -19,8 +19,11 @@ type SanityImage = {
 
 export function urlFor(source: any, maxWidth: number = 2000): any {
   // console.log(source);
-  if (!source || !source?.assetId) {
-    return "undefined";
+  if (
+    !source ||
+    !(source._id || source._ref || source.asset?._id || source.asset?._ref)
+  ) {
+    return "/bg.png";
   }
   //7cbf348a36c255502fdd8b4d2ae93c902e2c2ba8-900x400.png?rect=215,0,378,400&w=2000&fit=max&auto=format&dpr=2
   if (source.crop) {

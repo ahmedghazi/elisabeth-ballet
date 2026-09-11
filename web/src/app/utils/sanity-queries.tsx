@@ -1,5 +1,5 @@
-import { groq } from "next-sanity";
-import { client } from "./sanity-client";
+import { defineQuery, groq } from "next-sanity";
+import { sanityFetch } from "./sanity.client";
 import {
   Home,
   Infos,
@@ -21,55 +21,64 @@ import {
 import { cache } from "react";
 
 // const clientFetch = cache(client.fetch.bind(client));
-export const cachedClient = cache(client.fetch.bind(client));
+// export const cachedClient = cache(client.fetch.bind(client));
+
+export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0]{
+  ...,
+  logo{
+    ...,
+    asset->
+  },
+  navPrimary[]{
+    ...,
+    _type == 'linkInternal' => {
+      ...,
+      link->{
+        _type,
+        slug
+      }
+    }
+  },
+  navSecondary[]{
+    ...,
+    _type == 'linkInternal' => {
+      ...,
+      link->{
+        _type,
+        slug
+      }
+    }
+  },
+}`);
 
 export async function getSettings(): Promise<Settings> {
-  return client.fetch(
-    groq`*[_type == "settings"][0]{
-      ...,
-      logo{
-        ...,
-        asset->
-      },
-      navPrimary[]{
-        ...,
-        _type == 'linkInternal' => {
-          ...,
-          link->{
-            _type,
-            slug
-          }
-        }
-      },
-      navSecondary[]{
-        ...,
-        _type == 'linkInternal' => {
-          ...,
-          link->{
-            _type,
-            slug
-          }
-        }
-      },
-
-    }`
-  );
-}
-
-export async function getTags(): Promise<Tag[]> {
-  return client.fetch(
-    groq`*[_type == "tag"]{
-      ...,
-
-    }`
-  );
+  return sanityFetch({
+    query: SETTINGS_QUERY,
+    tags: ["settings"],
+  });
 }
 
 /**
- * HOME
+ * TAGS_QUERY
  */
 
-export const homeQuery = groq`*[_type == "home"][0]{
+export const TAGS_QUERY = defineQuery(`*[_type == "tag"]{
+  ...,
+}`);
+export async function getTags(): Promise<Tag[]> {
+  return sanityFetch({
+    query: TAGS_QUERY,
+    tags: ["tag"],
+  });
+}
+
+/**
+ * eHOME_QUERY
+
+ */
+
+export const HOME_QUERY = defineQuery(`
+  *[_type == "home"][0]{
   ...,
   seo{
    ${seo}
@@ -79,15 +88,19 @@ export const homeQuery = groq`*[_type == "home"][0]{
     ${projectCard}
   }
 
-}`;
+}
+  `);
 export async function getHome(): Promise<Home> {
-  return client.fetch(homeQuery, {});
+  return sanityFetch({
+    query: HOME_QUERY,
+    tags: ["home"],
+  });
 }
 
 /**
- * IN?FOS
+ * INFOS_QUERY
  */
-export const infosQuery = groq`*[_type == "infos"][0]{
+export const INFOS_QUERY = defineQuery(`*[_type == "infos"][0]{
   ...,
   seo{
    ${seo}
@@ -120,21 +133,23 @@ export const infosQuery = groq`*[_type == "infos"][0]{
       }
     }
   }
-}`;
+}`);
+
 export async function getInfos(): Promise<Infos> {
-  return client.fetch(infosQuery, {});
+  return sanityFetch({
+    query: INFOS_QUERY,
+    tags: ["infos"],
+  });
 }
 
 /**
- * PROJECT
+ * PROJECT_QUERY
  */
-export const projectQuery = groq`*[_type == "project" && slug.current == $slug][0]{
+export const PROJECT_QUERY =
+  defineQuery(`*[_type == "project" && slug.current == $slug][0]{
   ...,
   seo{
-    ...,
-    metaImage{
-      asset->
-    }
+    ${seo}
   },
 
   media[] {
@@ -151,32 +166,39 @@ export const projectQuery = groq`*[_type == "project" && slug.current == $slug][
     ${blockContent}
   },
 
-}`;
+}`);
 export async function getProject(slug: string): Promise<Project> {
-  // return client.fetch(projectQuery, { slug: slug });
-  return cachedClient(projectQuery, { slug: slug });
+  console.log("getProject => slug", slug);
+  return sanityFetch({
+    query: PROJECT_QUERY,
+    qParams: { slug: slug },
+    tags: ["project"],
+  });
 }
 
-export const projectsCardQuery = groq`
+/**
+ * PROJECTS_CARD_QUERY
+ */
+export const PROJECTS_CARD_QUERY = defineQuery(`
   *[_type == "project"
   && !(_id in path("drafts.**"))
   ]{
     ${projectCard}
   } | order(_createdAt desc)
-`;
+`);
 
 export async function getProjectsCard(): Promise<Project[]> {
-  return client.fetch(projectsCardQuery, {});
+  return sanityFetch({
+    query: PROJECTS_CARD_QUERY,
+    tags: ["project"],
+  });
 }
 
 /**
- * TAGS
+ * PAGE PAGE_MODULAIRE_QUERY
  */
-
-/**
- * PAGE MODULAIRE
- */
-export const pageModulaireQuery = groq`*[_type == "pageModulaire" && slug.current == $slug][0]{
+export const PAGE_MODULAIRE_QUERY =
+  defineQuery(`*[_type == "pageModulaire" && slug.current == $slug][0]{
   ...,
   seo{
     ...,
@@ -192,7 +214,11 @@ export const pageModulaireQuery = groq`*[_type == "pageModulaire" && slug.curren
     ${moduleProjects},
 
   },
-}`;
+}`);
 export async function getPageModulaire(slug: string): Promise<PageModulaire> {
-  return cachedClient(pageModulaireQuery, { slug: slug });
+  return sanityFetch({
+    query: PAGE_MODULAIRE_QUERY,
+    qParams: { slug: slug },
+    tags: ["pageModulaire"],
+  });
 }

@@ -1,11 +1,12 @@
-import React from "react";
+import React, { JSX } from "react";
 import { Metadata } from "next";
-import { getHome, homeQuery } from "./utils/sanity-queries";
+import { getHome, HOME_QUERY } from "./utils/sanity-queries";
 import { draftMode } from "next/headers";
-import { Home } from "./types/schema";
-import { getClient } from "./utils/sanity-client";
+import { getClient } from "./utils/sanity.client";
 import ContentHome from "./components/ContentHome";
 import website from "./config/website";
+import type { Home } from "./types/schema";
+import { notFound } from "next/navigation";
 
 type PageProps = {
   params: {
@@ -32,18 +33,18 @@ const Home: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   // const data = await getHome();
   console.log(params.slug);
 
-  const { isEnabled: preview } = draftMode();
+  const { isEnabled: preview } = await draftMode();
   let data: Home;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      homeQuery,
-      params
+      HOME_QUERY,
+      params,
     );
   } else {
     data = (await getHome()) as Home;
   }
 
-  if (!data) return <div>please edit page</div>;
+  if (!data) return notFound();
   return (
     <div className='template--home' data-template='home'>
       <ContentHome input={data} />

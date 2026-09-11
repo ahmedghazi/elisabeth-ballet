@@ -1,3 +1,5 @@
+@use "../../mixins" as *;
+
 .burger-wrapper {
   z-index: 250;
   &::after {

@@ -11,6 +11,7 @@ type Props = {
 };
 
 const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
+  console.log(asset);
   return (
     <figure
       style={{

@@ -1,25 +1,26 @@
-import React from "react";
+import React, { JSX } from "react";
 import website from "@/app/config/website";
 import { Project } from "@/app/types/schema";
-import { getProject, projectQuery } from "@/app/utils/sanity-queries";
-import { Metadata } from "next";
+import { getProject, PROJECT_QUERY } from "@/app/utils/sanity-queries";
+import { Metadata, NextPage } from "next";
 import { draftMode } from "next/headers";
-import { getClient } from "@/app/utils/sanity-client";
+import { getClient } from "@/app/utils/sanity.client";
 import ContentProject from "@/app/components/ContentProject";
+import { notFound } from "next/navigation";
+
+type Params = Promise<{ slug: string }>;
 
 type PageProps = {
-  params: {
-    slug: string;
-  };
+  params: Params;
 };
-
 export const revalidate = 3600; // revalidate every hour
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const data = await getProject(params.slug);
+  const { slug } = await params;
+  const data = await getProject(slug);
   return {
     title: data?.seo?.metaTitle || data.title,
     description: data?.seo?.metaDescription,
@@ -29,21 +30,21 @@ export async function generateMetadata({
   };
 }
 
-const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
-  params,
-}) => {
-  const { isEnabled: preview } = draftMode();
+const Page: NextPage<PageProps> = async ({ params }) => {
+  const { isEnabled } = await draftMode();
+  const { slug } = await params;
+
   let data: Project;
-  if (preview) {
+  if (isEnabled) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      projectQuery,
-      params
+      PROJECT_QUERY,
+      { slug },
     );
   } else {
-    data = await getProject(params.slug);
+    data = await getProject(slug);
   }
 
-  if (!data) return <div className='py-md'>Page not found</div>;
+  if (!data) return notFound();
   return (
     <div className='template--project' data-template='project'>
       <ContentProject input={data} />

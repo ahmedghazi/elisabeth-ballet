@@ -1,12 +1,12 @@
 import {defineField, defineType} from 'sanity'
 // import {baseLanguage} from '../locale/supportedLanguages'
-import {ThLargeIcon} from '@sanity/icons'
+import {ThListIcon} from '@sanity/icons/ThList'
 
 export default defineType({
   name: 'projects',
   title: 'Projects',
   type: 'document',
-  icon: ThLargeIcon,
+  icon: ThListIcon,
   groups: [
     {
       default: true,

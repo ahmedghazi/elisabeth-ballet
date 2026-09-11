@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { getSettings } from "../utils/sanity-queries";
@@ -12,7 +12,9 @@ const Aside = async (props: Props) => {
     <aside>
       <Burger />
       <div className='navs'>
-        <Header settings={settings} />
+        <Suspense fallback={null}>
+          <Header settings={settings} />
+        </Suspense>
         <Footer settings={settings} />
       </div>
     </aside>

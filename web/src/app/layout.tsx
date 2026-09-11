@@ -7,6 +7,8 @@ import Cursor from "./components/ui/Cursor";
 import Aside from "./components/Aside";
 import Bg from "./components/Bg";
 import PageTransition from "./components/ui/PageTransition";
+import { draftMode } from "next/headers";
+import VisualEditingClient from "./components/VisualEditingClient";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -16,11 +18,13 @@ export const metadata = {
   description: website.description,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { isEnabled } = await draftMode();
+
   return (
     <html lang='fr'>
       <body className='is-loading'>
@@ -34,6 +38,7 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Aside />
+                {isEnabled && <VisualEditingClient />}
               </div>
             </LocaleContextProvider>
           </PageContextProvider>

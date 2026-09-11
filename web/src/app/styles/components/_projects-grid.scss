@@ -1,3 +1,6 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
 .projects-grid {
   column-gap: toRem(45);
 }
