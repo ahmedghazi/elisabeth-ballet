@@ -18,7 +18,8 @@
 
 .template--infos {
   .cv-group {
-    scroll-padding-top: calc(var(--space-md) + toRem(24));
+    // scroll-padding-top: calc(var(--space-md) + toRem(24));
+    scroll-margin-top: calc(var(--space-md) * 1);
   }
 }
 
