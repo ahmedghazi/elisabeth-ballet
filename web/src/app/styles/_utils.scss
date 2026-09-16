@@ -12,9 +12,9 @@ figure img {
   display: block;
   background-size: contain !important;
   &.is-loading {
-    -ms-interpolation-mode: unset;
-    image-rendering: unset;
-    image-rendering: unset;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;
   }
 }
 

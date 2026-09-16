@@ -13,6 +13,11 @@ type Props = {
 const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
   console.log(asset);
   const [loaded, setLoaded] = useState<boolean>(false);
+  const _onLoad = () => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 150);
+  };
   return (
     <figure
       style={{
@@ -36,7 +41,7 @@ const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
         blurDataURL={asset?.metadata?.lqip}
         // placeholder='blur'
         placeholder={asset?.metadata?.lqip}
-        onLoad={() => setLoaded(true)}
+        onLoad={_onLoad}
       />
     </figure>
   );
