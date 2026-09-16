@@ -17,13 +17,13 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/vision": "^6.13.1",
+    "@sanity/vision": "6.13.2",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-icons": "^5.7.0",
     "react-is": "^19.3.0",
     "react-player": "^3.4.0",
-    "sanity": "^6.13.1",
+    "sanity": "6.13.2",
     "sanity-codegen": "^0.9.8",
     "sanity-plugin-media": "^6.1.8",
     "styled-components": "^6.5.3"
