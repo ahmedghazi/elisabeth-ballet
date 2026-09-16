@@ -6,9 +6,9 @@ import { LocaleContextProvider } from "./context/LocaleContext";
 import Cursor from "./components/ui/Cursor";
 import Aside from "./components/Aside";
 import Bg from "./components/Bg";
-import PageTransition from "./components/ui/PageTransition";
 import { draftMode } from "next/headers";
 import VisualEditingClient from "./components/VisualEditingClient";
+import { ViewTransition } from "react";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -26,17 +26,19 @@ export default async function RootLayout({
   const { isEnabled } = await draftMode();
 
   return (
-    <html lang='fr'>
+    <html lang='fr' data-scroll-behavior='smooth'>
       <body className='is-loading'>
         <div id='page'>
           <PageContextProvider>
             <LocaleContextProvider>
               <div className='page-layout md:grid md:grid-cols-7'>
                 <Bg />
-                <main className='col-span-6'>
-                  {/* <PageTransition>{children}</PageTransition> */}
-                  {children}
-                </main>
+                <ViewTransition>
+                  <main className='col-span-6'>
+                    {/* <PageTransition>{children}</PageTransition> */}
+                    {children}
+                  </main>
+                </ViewTransition>
                 <Aside />
                 {isEnabled && <VisualEditingClient />}
               </div>

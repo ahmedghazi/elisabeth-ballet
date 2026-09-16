@@ -20,11 +20,7 @@ const ProjectCard = ({ input }: Props) => {
   return (
     <article className='project-card'>
       <Link href={`${_linkResolver(input)}?referer=${pathname}`}>
-        <Figure
-          asset={input.imageCover?.asset}
-          width={30600}
-          alt={input.title}
-        />
+        <Figure asset={input.imageCover?.asset} width={600} alt={input.title} />
         <div className='infos text-center py-sm-'>
           <h2>{input.title}</h2>
           <PortableText
